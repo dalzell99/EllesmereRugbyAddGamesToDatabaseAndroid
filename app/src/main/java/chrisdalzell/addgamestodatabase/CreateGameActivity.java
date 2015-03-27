@@ -66,7 +66,8 @@ public class CreateGameActivity extends FragmentActivity {
     String message;
 
     // Data to be used in spinners
-    public static List<String> divisions = Arrays.asList("Div 1", "Div 2", "Div 3", "Colts", "U18", "U16", "U14.5", "U13", "U11.5");
+    public static List<String> divisions = Arrays.asList("Div 1", "Women", "Div 2", "Div 3", "Colts",
+            "U18", "U16", "U14.5", "U13", "U11.5", "U10", "U8.5", "U7");
     List<String> locations = Arrays.asList("CC Upper 1", "Darfield 1", "Darfield 2", "Rolleston 1a", "Rolleston 1b", "Rolleston 2", "Rolleston 3", "Rolleston 4", "Rolleston 2a", "Rolleston 2b", "Rolleston 5b", "Rolleston 5a", "Kaiapoi", "Ohoka", "Hampstead 1", "Ashburton 1", "Prebbleton 1", "Oxford 2", "Glenmark", "Southbridge");
     List<String> teamsDiv1 = Arrays.asList("Hornby", "Waihora", "Lincoln", "Raikaia", "Methven", "Southbridge", "Burn/Duns/Irwell", "Glenmark", "Darfield",
             "Ashley", "Prebbleton", "Celtic", "Saracens", "Oxford", "Ohoka", "Kaiapoi", "West Melton", "Southern", "Hampstead", "Rolleston");
@@ -308,7 +309,7 @@ public class CreateGameActivity extends FragmentActivity {
                 displayToast("Game Created");
                 message = "";
             } else {
-                displayToast("Game already exists.");
+                displayToast("Error. The game may already exist in database. Contact app creator.");
                 message = "";
             }
         }
