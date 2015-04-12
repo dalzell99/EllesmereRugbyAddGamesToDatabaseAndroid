@@ -63,28 +63,46 @@ public class CreateGameActivity extends FragmentActivity {
     public static String SERVER_ADDRESS = "http://www.possumpam.com/rugby-scoring-app-scripts/";
 
     // Stores message from database
-    String message;
+    String message = "";
 
     // Data to be used in spinners
     public static List<String> divisions = Arrays.asList("Div 1", "Women", "Div 2", "Div 3", "Colts",
             "U18", "U16", "U14.5", "U13", "U11.5", "U10", "U8.5", "U7");
-    List<String> locations = Arrays.asList("CC Upper 1", "Darfield 1", "Darfield 2", "Rolleston 1a", "Rolleston 1b", "Rolleston 2", "Rolleston 3", "Rolleston 4", "Rolleston 2a", "Rolleston 2b", "Rolleston 5b", "Rolleston 5a", "Kaiapoi", "Ohoka", "Hampstead 1", "Ashburton 1", "Prebbleton 1", "Oxford 2", "Glenmark", "Southbridge");
+    List<String> locations = Arrays.asList("", "CC Upper 1", "Darfield 1", "Darfield 2", "Rolleston 1a", "Rolleston 1b", "Rolleston 2", "Rolleston 3", "Rolleston 4", "Rolleston 2a", "Rolleston 2b", "Rolleston 5b", "Rolleston 5a", "Kaiapoi", "Ohoka", "Hampstead 1", "Ashburton 1", "Prebbleton 1", "Oxford 2", "Glenmark", "Southbridge");
     List<String> teamsDiv1 = Arrays.asList("Hornby", "Waihora", "Lincoln", "Raikaia", "Methven", "Southbridge", "Burn/Duns/Irwell", "Glenmark", "Darfield",
-            "Ashley", "Prebbleton", "Celtic", "Saracens", "Oxford", "Ohoka", "Kaiapoi", "West Melton", "Southern", "Hampstead", "Rolleston");
-    List<String> teamsDiv2 = Arrays.asList("Springston", "West Melton", "Diamond Harbour", "Leeston", "Darfield", "Selwyn", "Banks Peninsula",
-            "Southbridge", "Hornby", "Kirwee", "Rolleston", "Lincoln", "Prebbleton", "Burn/Duns/Irwell");
-    List<String> teamsDiv3 = Arrays.asList("Hornby", "Waihora", "Kirwee", "Springston", "Burn/Duns/Irwell", "Lincoln");
-    List<String> teamsColts = Arrays.asList("Banks Peninsula", "Waihora", "Prebbleton", "Celtic", "Rolleston", "Lincoln", "West Melton", "Darfield",
-            "Springston", "Kirwee");
-    List<String> teamsU18 = Arrays.asList("Malvern Combined", "Waihora", "Springston/Southbridge", "Meth/Allen/Rak", "Tinwald/Celtic");
-    List<String> teamsU16 = Arrays.asList("Ashley", "Oxford", "Waihora", "Woodend/Ohoka", "Rolleston", "Prebbleton", "West Melton", "Celtic",
-            "Malvern Combined", "Lincoln", "Kaiapoi", "Harlequins");
+            "Ashley", "Prebbleton", "Celtic", "Saracens", "Oxford", "Ohoka", "Kaiapoi", "West Melton", "Southern", "Hampstead", "Rolleston", "Test Game");
+    List<String> teamsWomen = Arrays.asList();
+    List<String> teamsDiv2 = Arrays.asList("Springston", "Diamond Harbour", "Darfield", "Banks Peninsula",
+            "Southbridge", "Kirwee", "Lincoln", "Prebbleton", "Burn/Duns/Irwell");
+    List<String> teamsDiv3 = Arrays.asList("Hornby", "Waihora", "Kirwee", "Springston", "Burn/Duns/Irwell", "Lincoln", "Rolleston", "West Melton");
+    List<String> teamsColts = Arrays.asList("Banks Peninsula", "Waihora", "Prebbleton", "Celtic", "Lincoln Red", "Lincoln Black", "West Melton", "Darfield",
+            "Springston", "Kirwee", "Burn/Duns/Irwell");
+    List<String> teamsU18 = Arrays.asList("Malvern Combined", "Waihora", "Rangiora High School", "Methven/Rakaia", "Hurunui",
+            "Kaiapoi", "Ashley/Oxford", "West Melton/Rolleston", "Lincoln", "Celtic");
+    List<String> teamsU16 = Arrays.asList("Ashley/Amberley", "Oxford", "Waihora", "Rolleston", "Prebbleton", "West Melton/Southbridge", "Celtic",
+            "Malvern", "Lincoln", "Kaiapoi", "Hampstead", "Hurunui", "Methven", "Saracens");
     List<String> teamsU145 = Arrays.asList("Rolleston", "Prebbleton", "Malvern Combined", "West Melton", "Waihora", "Lincoln", "Duns/Southbr/Leest/Irwell");
-    List<String> teamsU13 = Arrays.asList("Rolleston Black", "Rolleston Gold", "West Melton", "Lincoln", "Waihora", "Duns/Irwell/Leeston",
-            "Prebbleton White", "Springston/Southbridge", "Prebbleton Blue", "Darfield");
-    List<String> teamsU115 = Arrays.asList("Prebbleton Black", "Rolleston Black", "Rolleston Gold", "Lincoln", "Southbridge", "Waihora White",
-            "Duns/Irwell/Sprinst", "Selwyn/Sheffield", "West Melton", "Prebbleton Blue", "Prebbleton White", "Waihora Black", "Banks Peninsula",
-            "Leeston", "Darfield/Kirwee");
+    List<String> teamsU13 = Arrays.asList("Rolleston Black", "Rolleston Gold", "West Melton", "Lincoln", "Waihora White", "Waihora Black", "Duns/Irwell/Leeston",
+            "Prebbleton White", "Springston/Lincoln", "Prebbleton Blue", "Darfield", "Southbridge", "Malvern Combined");
+    List<String> teamsU115 = Arrays.asList("Rolleston Black", "Rolleston Gold", "Lincoln", "Southbridge", "Waihora",
+            "Duns/Irwell", "West Melton Gold", "West Melton Blue", "Prebbleton Blue", "Prebbleton White", "Banks Peninsula",
+            "Leeston", "Malvern Combined", "Prebbleton Green", "Prebbleton Red", "Springston");
+    List<String> teamsU10 = Arrays.asList("Rolleston Black", "Rolleston Gold", "Lincoln Red", "Lincoln Black", "Waihora White", "Waihora Black",
+            "Duns/Irwell", "West Melton Gold", "West Melton Blue", "Prebbleton Blue", "Prebbleton White", "Banks Peninsula",
+            "Leeston/Southbridge", "Prebbleton Green", "Prebbleton Red", "Springston", "Selwyn", "Darfield", "Rolleston Red", "Rolleston Blue");
+    List<String> teamsU85 = Arrays.asList("Rolleston Black", "Rolleston Gold", "Rolleston White", "Lincoln Red", "Lincoln Black", "Waihora White", "Waihora Black", "Waihora Red",
+            "Duns/Irwell", "West Melton Gold", "West Melton Blue", "Prebbleton Blue", "Prebbleton White", "Banks Peninsula",
+            "Leeston Red", "Leeston Black", "Prebbleton Green", "Prebbleton Red", "Springston Black", "Springston Green", "Selwyn", "Darfield", "Sheffield", "Rolleston Red",
+            "Leeston White", "West Melton White", "Kirwee", "Southbridge");
+    List<String> teamsU7 = Arrays.asList("Rolleston Black", "Rolleston Gold", "Rolleston Red", "Rolleston Blue", "Rolleston White",
+            "Lincoln Red (Section 1)", "Lincoln Red (Section 4)", "Lincoln Black", "Lincoln Green", "Lincoln White",
+            "Waihora White", "Waihora Black", "Waihora Red", "Waihora Gold", "Waihora Green", "Duns/Irwell Blue", "Duns/Irwell Black",
+            "West Melton Gold", "West Melton Blue", "West Melton White", "West Melton Red", "West Melton Black",
+            "Prebbleton 1", "Prebbleton 2", "Prebbleton 3", "Prebbleton 4", "Prebbleton 5", "Prebbleton 6", "Prebbleton 7", "Prebbleton 8",
+            "Banks Peninsula Maroon", "Banks Peninsula Gold", "Leeston Red", "Leeston Black", "Leeston White",
+            "Springston Black", "Springston Green", "Springston White", "Selwyn Black", "Selwyn Green", "Darfield Red", "Darfield Blue", "Sheffield",
+            "Kirwee Red", "Kirwee Yellow", "Kirwee White", "Kirwee Gold", "Southbridge White", "Southbridge Blue", "Southbridge Black",
+            "Diamond Harbour White", "Diamond Harbour Blue");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +114,7 @@ public class CreateGameActivity extends FragmentActivity {
 
         // Sort all the collections alphabetically
         Collections.sort(teamsDiv1);
+        Collections.sort(teamsWomen);
         Collections.sort(teamsDiv2);
         Collections.sort(teamsDiv3);
         Collections.sort(teamsColts);
@@ -104,18 +123,21 @@ public class CreateGameActivity extends FragmentActivity {
         Collections.sort(teamsU145);
         Collections.sort(teamsU13);
         Collections.sort(teamsU115);
+        Collections.sort(teamsU10);
+        Collections.sort(teamsU85);
+        Collections.sort(teamsU7);
 
         // Create reference to all the controls in the layout
         spinnerDivision = (Spinner) findViewById(R.id.spinnerDivision);
         spinnerHomeTeam = (Spinner) findViewById(R.id.spinnerHomeTeam);
         spinnerAwayTeam = (Spinner) findViewById(R.id.spinnerAwayTeam);
-        spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
+        //spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
         buttonCreateGame = (Button) findViewById(R.id.buttonCreateGame);
         buttonSetDate = (Button) findViewById(R.id.buttonChangeDate);
-        buttonSetTime = (Button) findViewById(R.id.buttonChangeTime);
+        //buttonSetTime = (Button) findViewById(R.id.buttonChangeTime);
         textViewDate = (TextView) findViewById(R.id.textViewDate);
         textViewDateString = (TextView) findViewById(R.id.textViewDateString);
-        textViewTime = (TextView) findViewById(R.id.textViewTime);
+        //textViewTime = (TextView) findViewById(R.id.textViewTime);
 
         // Create adapters, populate them and connect them to the spinners
         teamsAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, teamsDiv1);
@@ -128,9 +150,9 @@ public class CreateGameActivity extends FragmentActivity {
         spinnerDivision.setAdapter(divisionAdapter);
         spinnerDivision.setOnItemSelectedListener(divisionItemClickListener);
 
-        locationAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, locations);
-        locationAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinnerLocation.setAdapter(locationAdapter);
+        //locationAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, locations);
+        //locationAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        //spinnerLocation.setAdapter(locationAdapter);
 
         // Call validity check when Create Game button clicked
         buttonCreateGame.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +177,7 @@ public class CreateGameActivity extends FragmentActivity {
 
         // Initialise TimePickerDialog with noon if textViewTime empty
         // or previously selected time and then display it.
+        /**
         buttonSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,6 +192,7 @@ public class CreateGameActivity extends FragmentActivity {
                 new TimePickerDialog(CreateGameActivity.this, onTimeSet, hour, minute, false).show();
             }
         });
+         */
     }
 
     // Create OnDateSetListener which sets hidden textViewDateString to date in YYYYMMDD format and
@@ -195,7 +219,7 @@ public class CreateGameActivity extends FragmentActivity {
             String time = (hour > 12 ? String.valueOf(hour - 12) : String.valueOf(hour));
             time +=  ":" + pad(minute);
             time += (hour >= 12 ? "pm" : "am");
-            textViewTime.setText(time);
+            //textViewTime.setText(time);
         }
     };
 
@@ -204,8 +228,8 @@ public class CreateGameActivity extends FragmentActivity {
         // Retrieve game details
         String homeTeam = spinnerHomeTeam.getSelectedItem().toString();
         String awayTeam = spinnerAwayTeam.getSelectedItem().toString();
-        String location = spinnerLocation.getSelectedItem().toString();
-        String time = textViewTime.getText().toString();
+        //String location = spinnerLocation.getSelectedItem().toString();
+        //String time = textViewTime.getText().toString();
         String date = textViewDate.getText().toString();
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -215,8 +239,8 @@ public class CreateGameActivity extends FragmentActivity {
 
         // set dialog message
         alertDialogBuilder
-                .setMessage("Home Team: " + homeTeam + "\nAway Team: " + awayTeam + "\nLocation: " +
-                        location + "\nTime: " + time + "\nDate: " + date + "\n\nIs this correct?")
+                .setMessage("Home Team: " + homeTeam + "\nAway Team: " + awayTeam
+                        + "\nDate: " + date + "\n\nIs this correct?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -261,11 +285,11 @@ public class CreateGameActivity extends FragmentActivity {
             String gameID = createGameID();
             String homeTeam = spinnerHomeTeam.getSelectedItem().toString();
             String awayTeam = spinnerAwayTeam.getSelectedItem().toString();
-            String location = spinnerLocation.getSelectedItem().toString();
-            String time = textViewTime.getText().toString();
+            //String location = spinnerLocation.getSelectedItem().toString();
+            //String time = textViewTime.getText().toString();
 
             // Check if all necessary details have been entered
-            if (!homeTeam.equals("") && !awayTeam.equals("") && !location.equals("") && !time.equals("")) {
+            if (!homeTeam.equals("") && !awayTeam.equals("")) {
                 HttpClient httpclient = new DefaultHttpClient();
 
                 // Create HttpPost with script server address passed to asynctask
@@ -276,8 +300,8 @@ public class CreateGameActivity extends FragmentActivity {
                     nameValuePairs.add(new BasicNameValuePair("gameID", gameID));
                     nameValuePairs.add(new BasicNameValuePair("homeTeam", homeTeam));
                     nameValuePairs.add(new BasicNameValuePair("awayTeam", awayTeam));
-                    nameValuePairs.add(new BasicNameValuePair("location", location));
-                    nameValuePairs.add(new BasicNameValuePair("time", time));
+                    nameValuePairs.add(new BasicNameValuePair("location", ""));
+                    nameValuePairs.add(new BasicNameValuePair("time", ""));
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                     // Execute HttpPost and store response
@@ -343,28 +367,40 @@ public class CreateGameActivity extends FragmentActivity {
                     teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsDiv1);
                     break;
                 case 1:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsDiv2);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsWomen);
                     break;
                 case 2:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsDiv3);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsDiv2);
                     break;
                 case 3:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsColts);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsDiv3);
                     break;
                 case 4:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU18);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsColts);
                     break;
                 case 5:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU16);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU18);
                     break;
                 case 6:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU145);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU16);
                     break;
                 case 7:
-                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU13);
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU145);
                     break;
                 case 8:
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU13);
+                    break;
+                case 9:
                     teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU115);
+                    break;
+                case 10:
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU10);
+                    break;
+                case 11:
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU85);
+                    break;
+                case 12:
+                    teamsAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, teamsU7);
                     break;
             }
 
